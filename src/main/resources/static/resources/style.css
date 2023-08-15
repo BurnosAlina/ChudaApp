@@ -1,0 +1,84 @@
+body {
+    width: 100%;
+    margin: 0;
+}
+
+.headerText {
+    font-size: 5vw;
+    min-font-size: 14px;
+}
+
+.header img {
+    width: 250px;
+    margin: 0px 50px;
+}
+
+.separator {
+    min-height: 10px;
+    background-color: black;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 3px;
+    background-color: lightgrey;
+    color: black;
+}
+
+.content {
+    text-align: center;
+    margin: 50px 100px;
+}
+
+.return {
+    text-align: left;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin: 0px 200px;
+}
+
+.loginForm {
+    margin: 25px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.confirmation {
+    color: blue;
+}
+
+.logout {
+    text-align: left;
+}
+
+.tables {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.options > button {
+    margin-left: 25px;
+}
+
+.welcome {
+    margin-bottom: 30px;
+}
+
+.error {
+    color: red;
+}

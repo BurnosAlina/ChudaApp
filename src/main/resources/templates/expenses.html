@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wydatki</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+<main layout:fragment="content" class="content">
+  <a th:href="@{/}"><p class="logout">Strona główna</p></a>
+  <h1>Wydatki</h1>
+  <form class="row g-3" th:action="@{/addExpense}" method="post" th:object="${expense}" novalidate>
+    <div class="col-md-6">
+      <label for="date" class="form-label">Data</label>
+      <input type="date" class="form-control" id="date" th:field="*{date}">
+      <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="error"> To pole nie może byc puste</p>
+    </div>
+    <div class="col-md-4">
+      <label for="description" class="form-label">Opis</label>
+      <input type="text" class="form-control" id="description" th:field="*{description}">
+c    </div>
+    <div class="col-md-2">
+      <label for="amount" class="form-label">Kwota</label>
+      <input type="number" step="any" class="form-control" id="amount" th:field="*{amount}">
+      <p th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" class="error"> To pole nie może byc puste ani ujemne</p>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Dodaj</button>
+    </div>
+  </form>
+  <div class="separator"></div>
+  <div class="tables">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Data</th>
+        <th scope="col">Opis</th>
+        <th scope="col">Kwota</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="expense: ${expenses}">
+        <td th:text="${expense.date}">Mark</td>
+        <td th:text="${expense.description}">Otto</td>
+        <td th:text="${expense.amount}">@mdo</td>
+      </tr>
+      </tbody>
+    </table>
+    <div>
+      <h5>In total:</h5>
+      <p th:text="${inTotal}">1000</p>
+    </div>
+  </div>
+  <div class="separator"></div>
+    <form class="row row-cols-lg-auto g-3 align-items-center" th:action="@{/archiveExpenses}" method="post">
+      <div class="col-12">
+        <input type="text" class="form-control" name="description" placeholder="opis">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Zarchiwizuj</button>
+      </div>
+    </form>
+</main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</html>

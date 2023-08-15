@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="https//www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Bilans</title>
+</head>
+<body>
+<main layout:fragment="content" class="content">
+    <a th:href="@{/}"><p class="logout">Strona główna</p></a>
+    <h3>Aktualny miesiąc - bilans:</h3>
+    <div class="separator"></div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Przychody in total</th>
+            <th scope="col">Wydatki in total</th>
+            <th scope="col">Zostało</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${incomesTotal}">Mark</td>
+            <td th:text="${expensesTotal}">Otto</td>
+            <td th:text="${balance}">@mdo</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

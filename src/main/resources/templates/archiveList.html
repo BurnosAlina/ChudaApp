@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main layout:fragment="content" class="content">
+  <a th:href="@{/archive}"><p class="logout">Wstecz</p></a>
+  <h1 th:text="${listDescription}"></h1>
+  <div class="separator"></div>
+  <div class="tables">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Data</th>
+        <th scope="col">Opis</th>
+        <th scope="col">Kwota</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="listPt: ${list}">
+        <td th:text="${listPt.date}">Mark</td>
+        <td th:text="${listPt.description}">Otto</td>
+        <td th:text="${listPt.amount}">@mdo</td>
+      </tr>
+      </tbody>
+    </table>
+    <div>
+      <h5>In total:</h5>
+      <p th:text="${inTotal}">1000</p>
+    </div>
+  </div>
+</main>
+</body>
+</html>

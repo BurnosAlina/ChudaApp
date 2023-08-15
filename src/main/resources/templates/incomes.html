@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Przychody</title>
+</head>
+<body>
+<main layout:fragment="content" class="content">
+    <a th:href="@{/}"><p class="logout">Strona główna</p></a>
+    <h1>Przychody</h1>
+    <form class="row g-3" th:action="@{/addIncome}" method="post" th:object="${income}">
+        <div class="col-md-6">
+            <label for="date" class="form-label">Data</label>
+            <input type="date" class="form-control" id="date" th:field="*{date}">
+            <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="error"> To pole nie może byc puste</p>
+        </div>
+        <div class="col-md-4">
+            <label for="description" class="form-label">Opis</label>
+            <input type="text" class="form-control" id="description" th:field="*{description}">
+            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error"> To pole nie może byc puste</p>
+
+        </div>
+        <div class="col-md-2">
+            <label for="amount" class="form-label">Kwota</label>
+            <input type="number" step="any" class="form-control" id="amount" th:field="*{amount}">
+            <p th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" class="error"> To pole nie może byc puste</p>
+        </div>
+        <div class="col-12">
+        <input class="btn btn-primary" type="submit" value="Dodaj">
+        </div>
+    </form>
+    <div class="separator"></div>
+    <div class="tables">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Opis</th>
+                <th scope="col">Kwota</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="income: ${incomes}">
+                <td th:text="${income.date}">Mark</td>
+                <td th:text="${income.description}">Otto</td>
+                <td th:text="${income.amount}">@mdo</td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <h5>In total:</h5>
+            <p th:text="${inTotal}">1000</p>
+        </div>
+    </div>
+    <div class="separator"></div>
+    <form class="row row-cols-lg-auto g-3 align-items-center" th:action="@{/archiveIncomes}" method="post">
+        <div class="col-12">
+            <input type="text" class="form-control" name="description" placeholder="opis">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Zarchiwizuj</button>
+        </div>
+    </form>
+</main>
+</body>
+</html>
