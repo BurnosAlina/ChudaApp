@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
@@ -20,7 +21,7 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    String loginForm(){
+    String loginForm() {
         return "login-form";
     }
 
@@ -31,9 +32,14 @@ public class LoginController {
     }
 
     @PostMapping("/register")
-    String registerUser(@Valid @ModelAttribute("user") UserRegistrationDto dto, BindingResult bindingResult, Model model) {
+    String registerUser(@RequestParam String passwordConfirmation,
+                        @Valid @ModelAttribute("user") UserRegistrationDto dto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("user", dto);
+            return "register";
+        }
+        if (!userInfoService.isPasswordTheSame(passwordConfirmation, dto)) {
+            model.addAttribute("notTheSamePassword", "Hasło musi być takie same!");
             return "register";
         }
         userInfoService.register(dto);
