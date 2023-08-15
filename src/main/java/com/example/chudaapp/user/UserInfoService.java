@@ -49,4 +49,8 @@ public class UserInfoService {
         }
         userInfoRepository.save(user);
     }
+
+    public boolean isPasswordTheSame(String passwordConfirmation, UserRegistrationDto userRegistrationDto) {
+        return userRegistrationDto.getPassword().equals(passwordConfirmation);
+    }
 }
