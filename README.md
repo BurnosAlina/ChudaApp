@@ -1,1 +1,1 @@
-Prosta aplikacja budżetu domowego w celach ćwiczeniowych. Stoniową będę dalej ją rozwijać o nowe opcje i ulepszać już napisany kod. # ChudaApp
+A simple household budget app for exercise purposes. Gradually, I will continue to develop with new options and improve the already written code.# ChudaApp
