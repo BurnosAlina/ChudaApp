@@ -21,7 +21,8 @@
     <div class="col-md-4">
       <label for="description" class="form-label">Opis</label>
       <input type="text" class="form-control" id="description" th:field="*{description}">
-c    </div>
+      <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error"> To pole nie może byc puste</p>
+    </div>
     <div class="col-md-2">
       <label for="amount" class="form-label">Kwota</label>
       <input type="number" step="any" class="form-control" id="amount" th:field="*{amount}">

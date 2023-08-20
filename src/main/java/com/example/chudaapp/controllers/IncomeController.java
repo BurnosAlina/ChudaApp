@@ -1,8 +1,6 @@
 package com.example.chudaapp.controllers;
 
-import com.example.chudaapp.expenses.ExpenseDto;
 import com.example.chudaapp.income.IncomeDto;
-import com.example.chudaapp.income.IncomeRepository;
 import com.example.chudaapp.income.IncomeService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -38,6 +36,10 @@ public class IncomeController {
     String addIncome (@Valid @ModelAttribute("income") IncomeDto incomeDto, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
             model.addAttribute("income", incomeDto);
+            List<IncomeDto> incomes = incomeService.findAll();
+            BigDecimal inTotal = incomeService.incomesInTotal();
+            model.addAttribute("incomes", incomes);
+            model.addAttribute("inTotal", inTotal);
             return "incomes";
         }
         incomeService.save(incomeDto);

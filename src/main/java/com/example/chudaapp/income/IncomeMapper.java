@@ -1,7 +1,5 @@
 package com.example.chudaapp.income;
 
-import com.example.chudaapp.expenses.Expense;
-import com.example.chudaapp.expenses.ExpenseDto;
 import org.springframework.stereotype.Component;
 
 @Component

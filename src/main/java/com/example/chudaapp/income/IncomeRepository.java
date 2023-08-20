@@ -1,6 +1,5 @@
 package com.example.chudaapp.income;
 
-import com.example.chudaapp.expenses.Expense;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

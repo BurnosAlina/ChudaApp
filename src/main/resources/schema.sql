@@ -32,3 +32,10 @@ CREATE TABLE income
     amount      FLOAT NOT NULL
 );
 
+CREATE TABLE product
+(
+    id          BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name        varchar(50) NOT NULL,
+    amount      FLOAT NOT NULL
+);
+

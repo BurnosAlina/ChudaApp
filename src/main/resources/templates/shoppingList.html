@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zakupy</title>
+</head>
+<body>
+<main layout:fragment="content" class="content">
+  <a th:href="@{/}"><p class="logout">Strona główna</p></a>
+    <h1>Zakupy - lista:</h1>
+    <form class="row g-3" th:action="@{/addProduct}" method="post" th:object="${product}">
+        <div class="col-md-6">
+            <label for="name" class="form-label">Nazwa</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}">
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"> To pole nie może byc puste</p>
+        </div>
+        <div class="col-md-2">
+            <label for="amount" class="form-label">Ilość</label>
+            <input type="number" step="any" class="form-control" id="amount" th:field="*{amount}">
+            <p th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" class="error"> To pole nie może byc puste</p>
+        </div>
+        <div class="col-12">
+            <input class="btn btn-primary" type="submit" value="Dodaj">
+        </div>
+    </form>
+    <div class="tables">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Nazwa</th>
+                <th scope="col">Ilość</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product: ${products}">
+                <td th:text="${product.name}">Mark</td>
+                <td th:text="${product.amount}">Otto</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

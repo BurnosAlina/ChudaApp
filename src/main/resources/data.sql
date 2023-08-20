@@ -21,3 +21,9 @@ VALUES
     ('2023-07-02', 'wypłata', 4500),
     ('2023-07-05', 'zwrot z podatku', 1515),
     ('2023-07-06', 'Bartek oddał', 284);
+
+INSERT INTO product (name, amount)
+VALUES
+    ('mleko owsiane', 1),
+    ('pomidory', 3),
+    ('proszek do prania', 1);
